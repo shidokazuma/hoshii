@@ -61,15 +61,27 @@
  #nameInput {
    height:50px;
  }
+#imgHolder {
+  height: auto;
+  width: 300px;
+}
+
+.container {
+  max-width: 600px;
+  margin:  0 auto;
+  padding:  20px;
+  text-align:  center;
+}
+
 </style>
 </head>
 <body>
 
-<div id="anscestor">
+<div class="container" id="anscestor">
   <button id="clickButton">Click me</button>
 </div>
 
-<div id="firstPage">
+<div class="container" id="firstPage">
   
   
    <div id="container1st">
@@ -82,42 +94,47 @@
    </div>
 </div>
 
-<div id="getOut">
+<div class="container" id="getOut">
   <div class="gifholder">
-    <img src="./goaway.gif" alt="">
+    <img id="imgHolder" src="./goaway.gif" alt="">
   </div>
   
   <h2>Nope.</h2>
   <button class="funButton" id="backBtn">Back</button>
 </div>
 
-<div id="secondPage">
+<div class="container" id="secondPage">
   <div class="gifholder">
-    <img src="./patrick-spongebob.gif" alt="">
+    <img id="imgHolder" src="./cat8.gif" alt="">
   </div>
-       <p id="question">How's your day, <span id="nameSpan"></span>?</p>
+  <p id="question">How's your day, <span id="nameSpan"></span>?</p>
   <button class="funButton" id="fineButton">Fine</button>
   <button class="funButton" id="notFineButton">Not Fine</button>
 
 </div>
 
-<div id="thirdPage">
-  <img src="./eyepuss.gif" alt="">
-  <p id="funQuestion">Is it okay to ask you a question, <span id="nameSpan2"></span>?</p>
-  <button class="funButton" id="yesButton">Yep</button>
-  <button class="funButton" id="noButton">Nope</button>
+<div class="container" id="thirdPage">
+  <div class="gifholder">
+    <img id="imgHolder" src="./cat1.gif" alt="">
+  </div>
+   <p id="funQuestion">Is it okay to ask you a question, <span id="nameSpan2"></span>?</p>
+    <button class="funButton" id="yesButton">Yep</button>
+    <button class="funButton" id="noButton">Nope</button>
 </div>
 
-<div id="fourthPage">
+<div class="container" id="fourthPage">
   <div class="gifholder">
-    
+    <img id="imgHolder" src="./cat7.gif" alt="">
   </div>
   <p id="hangoutQuestion">Do you wanna go out with me?</p>
   <button class="funButton" id="yesValentineButton">Yes</button>
   <button class="funButton" id="noValentineButton">No</button>
 </div>
 
-<div id="fifthPage">
+<div class="container" id="fifthPage">
+  <div class="gifholder">
+    <img id="imgHolder" src="./cat4.gif" alt="">
+  </div>
   <h2>See you at Saturday <br> February 17,2024 </h2>
   <button class="funButton" id="clickMe">❤️</button>
   
@@ -125,7 +142,7 @@
 
 
 <script>
-var noButtonClickCount = 0;
+
 
 document.getElementById("clickButton").addEventListener("click", function() {
   document.getElementById("anscestor").style.display = "none";
@@ -182,25 +199,37 @@ document.getElementById("yesButton").addEventListener("click", function() {
 });
 
 document.getElementById("noButton").addEventListener("click", function() {
-  var xPosition = Math.random() * 300;
-  var yPosition = Math.random() * 800;
+  var xPosition = Math.random() * 90;
+  var yPosition = Math.random() * 90;
   document.getElementById("noButton").style.position = "absolute";
-  document.getElementById("noButton").style.left = xPosition + "px";
-  document.getElementById("noButton").style.top = yPosition + "px";
-  
+  document.getElementById("noButton").style.left = xPosition + "%";
+  document.getElementById("noButton").style.top = yPosition + "%";
+
 });
 
+//document.getElementById("noButton").addEventListener("click", function() {
+//  var buttonNo =  document.getElementById("noButton");
+//  var randomX = math.random() * (window.innerWidth - buttonNo.offsetWidth);
+//  var randomY = math.random() * (window.innerHeight - buttonNo.offsetHeight);
+//  buttonNo.style.position = "absolute";
+//  buttonNo.style.left = randomX + "px";
+//  buttonNo.style.top = randomY + "px";
+//});
 
 
-var valentineButtonSize = 0
-var valentineButtonminus = 0
-var valentineTextSize = 16
-var valentineMinus = 16
+
+var valentineButtonSize = 0;
+var valentineButtonminus = 0;
+var valentineTextSize = 16;
+var valentineMinus = 16;
+var noValentineButtonCLickCount = 0;
+
+
 document.getElementById("noValentineButton").addEventListener("click", function() {
  // Increase size of the Yes Valentine button
-valentineButtonSize += 10;
+valentineButtonSize += 30;
 valentineButtonminus -= 1;
-valentineTextSize += 1;
+valentineTextSize += 2;
 valentineMinus -= 0.3;
 document.getElementById("yesValentineButton").style.width = valentineButtonSize + 100 + "px";
 document.getElementById("yesValentineButton").style.height = valentineButtonSize + 60 + "px";
@@ -208,6 +237,12 @@ document.getElementById("yesValentineButton").style.fontSize = valentineTextSize
 document.getElementById("noValentineButton").style.width= valentineButtonminus + 100 + "px";
 document.getElementById("noValentineButton").style.height = valentineButtonminus + 60 + "px";
 document.getElementById("noValentineButton").style.fontSize = valentineMinus  + "px";
+
+
+
+noValentineButtonCLickCount++;
+if (noValentineButtonCLickCount >= 5)
+  document.getElementById("noValentineButton").style.display = "none";
 });
 
 document.getElementById("yesValentineButton").addEventListener("click",function(){
