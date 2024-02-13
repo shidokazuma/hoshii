@@ -240,9 +240,24 @@ document.getElementById("noValentineButton").style.fontSize = valentineMinus  + 
 
 
 
-noValentineButtonCLickCount++;
-if (noValentineButtonCLickCount >= 5)
+noValentineButtonCLickCount++; 
+if (noValentineButtonCLickCount >= 5){
   document.getElementById("noValentineButton").style.display = "none";
+}
+
+if (noValentineButtonCLickCount === 5){
+  let button = document.getElementById("yesValentineButton");
+  let img = document.createElement('img');
+  img.src = './cat10.gif';
+  img.style.width = '90%';
+  img.style.height = 'auto';
+  button.innerHTML = '';
+  button.appendChild(img)
+}
+  
+
+
+  
 });
 
 document.getElementById("yesValentineButton").addEventListener("click",function(){
