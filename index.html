@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hi!</title>
+<style>
+  body {
+    font-family: cursive;
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    text-align: center;
+    background-color: #F8C8DC;
+    padding: 10px;
+  }
+  #anscestor ,#firstPage, #secondPage, #thirdPage, #fourthPage {
+    text-align: center;
+  }
+  #clickButton {
+    margin-top: 50px;
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+  }
+  #firstPage, #secondPage, #thirdPage, #fourthPage ,#fifthPage ,#getOut {
+    display: none;
+    margin-top: 50px;
+  }
+  .dayButton, .funButton {
+    font-size: 30px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    height:60px;
+    width:100px;
+    font-size: 16px;
+    cursor: pointer;
+    border: 5px solid #cae7e3;
+    border-radius: 20px;
+    margin: 10px;
+  }
+  
+  #container1st {
+    display:flex;
+    flex-direction : column;
+    align-items: center;
+  }
+  
+ #clickButton {
+   border: 8px Solid #cae7e3;
+   border-radius: 50px;
+   font-size: 40px;
+   font-family: cursive;
+   height:auto;
+   width: 200px;
+   text-shadow: 2px 2px #Fec7bc;
+   background: #f6eac2;
+ }
+ #nameInput {
+   height:50px;
+ }
+</style>
+</head>
+<body>
+
+<div id="anscestor">
+  <button id="clickButton">Click me</button>
+</div>
+
+<div id="firstPage">
+  
+  
+   <div id="container1st">
+     
+     <div class="gifholder">
+       <img src="./waitmemekid.gif" alt="">
+     </div>
+    <input type="text" id="nameInput" placeholder="Enter your Name">
+    <button class="funButton" id="submitBtn"> ehhhh</button>
+   </div>
+</div>
+
+<div id="getOut">
+  <div class="gifholder">
+    <img src="./goaway.gif" alt="">
+  </div>
+  
+  <h2>Nope.</h2>
+  <button class="funButton" id="backBtn">Back</button>
+</div>
+
+<div id="secondPage">
+  <div class="gifholder">
+    <img src="./patrick-spongebob.gif" alt="">
+  </div>
+       <p id="question">How's your day, <span id="nameSpan"></span>?</p>
+  <button class="funButton" id="fineButton">Fine</button>
+  <button class="funButton" id="notFineButton">Not Fine</button>
+
+</div>
+
+<div id="thirdPage">
+  <img src="./eyepuss.gif" alt="">
+  <p id="funQuestion">Is it okay to ask you a question, <span id="nameSpan2"></span>?</p>
+  <button class="funButton" id="yesButton">Yep</button>
+  <button class="funButton" id="noButton">Nope</button>
+</div>
+
+<div id="fourthPage">
+  <div class="gifholder">
+    
+  </div>
+  <p id="hangoutQuestion">Do you wanna go out with me?</p>
+  <button class="funButton" id="yesValentineButton">Yes</button>
+  <button class="funButton" id="noValentineButton">No</button>
+</div>
+
+<div id="fifthPage">
+  <h2>See you at Saturday <br> February 17,2024 </h2>
+  <button class="funButton" id="clickMe">❤️</button>
+  
+</div>
+
+
+<script>
+var noButtonClickCount = 0;
+
+document.getElementById("clickButton").addEventListener("click", function() {
+  document.getElementById("anscestor").style.display = "none";
+  document.getElementById("firstPage").style.display = "block";
+});
+
+document.getElementById("submitBtn").addEventListener("click", function() {
+  var name = document.getElementById("nameInput").value.trim().toLowerCase();
+  var acceptedNames = ["wyn", "wynona", "nona", "wynona soria"];
+  
+  if (acceptedNames.includes(name)) {
+    document.getElementById("firstPage").style.display = "none";
+    document.getElementById("secondPage").style.display = "block";
+    document.getElementById("nameSpan").textContent = name;
+    }else{
+    document.getElementById("getOut").style.display = "block";
+    document.getElementById("firstPage").style.display ="none";
+  }
+});
+
+document.getElementById("backBtn").addEventListener("click",function(){
+  document.getElementById("getOut").style.display="none";
+  document.getElementById("anscestor").style.display ="block";
+});
+
+document.getElementById("fineButton").addEventListener("click", function() {
+  var name = document.getElementById("nameSpan").textContent;
+  document.getElementById("funQuestion").textContent = "You're having a fine day, " + name + ". Is it okay to ask you a question?";
+  document.getElementById("thirdPage").style.display = "block";
+  document.getElementById("secondPage").style.display = "none";
+});
+
+document.getElementById("notFineButton").addEventListener("click", function() {
+  var name = document.getElementById("nameSpan").textContent;
+  document.getElementById("funQuestion").textContent = "Sorry to hear you're not having a good day, " + name + ". Is it okay to ask you a question to cheer you up?";
+  document.getElementById("thirdPage").style.display = "block";
+  document.getElementById("secondPage").style.display = "none";
+
+});
+
+document.getElementById("yesButton").addEventListener("click", function() {
+  var allYesButtons = document.querySelectorAll(".funButton");
+      allYesButtons.forEach(function(button) {
+        if (button.textContent === "Yep") {
+          button.style.display = "none";
+        }
+      });
+      
+  document.getElementById("thirdPage").style.display = "none";
+  document.getElementById("fourthPage").style.display = "block";
+    
+  
+  
+});
+
+document.getElementById("noButton").addEventListener("click", function() {
+  var xPosition = Math.random() * 300;
+  var yPosition = Math.random() * 800;
+  document.getElementById("noButton").style.position = "absolute";
+  document.getElementById("noButton").style.left = xPosition + "px";
+  document.getElementById("noButton").style.top = yPosition + "px";
+  
+});
+
+
+
+var valentineButtonSize = 0
+var valentineButtonminus = 0
+var valentineTextSize = 16
+var valentineMinus = 16
+document.getElementById("noValentineButton").addEventListener("click", function() {
+ // Increase size of the Yes Valentine button
+valentineButtonSize += 10;
+valentineButtonminus -= 1;
+valentineTextSize += 1;
+valentineMinus -= 0.3;
+document.getElementById("yesValentineButton").style.width = valentineButtonSize + 100 + "px";
+document.getElementById("yesValentineButton").style.height = valentineButtonSize + 60 + "px";
+document.getElementById("yesValentineButton").style.fontSize = valentineTextSize  + "px";
+document.getElementById("noValentineButton").style.width= valentineButtonminus + 100 + "px";
+document.getElementById("noValentineButton").style.height = valentineButtonminus + 60 + "px";
+document.getElementById("noValentineButton").style.fontSize = valentineMinus  + "px";
+});
+
+document.getElementById("yesValentineButton").addEventListener("click",function(){
+  document.getElementById("fourthPage").style.display="none";
+  document.getElementById("fifthPage").style.display ="block";
+});
+
+document.getElementById("clickMe").addEventListener("click", function(){
+    // Change the URL to the desired link
+    window.location.href = "flower.html";
+});
+
+</script>
+
+</body>
+</html>
