@@ -114,8 +114,8 @@
 </div>
 
 <div class="container" id="thirdPage">
-  <div class="gifholder">
-    <img id="imgHolder" src="./cat1.gif" alt="">
+  <div class="imgHolder">
+    <div id="imgFine"></div>
   </div>
    <p id="funQuestion">Is it okay to ask you a question, <span id="nameSpan2"></span>?</p>
     <button class="funButton" id="yesButton">Yep</button>
@@ -170,13 +170,34 @@ document.getElementById("backBtn").addEventListener("click",function(){
 
 document.getElementById("fineButton").addEventListener("click", function() {
   var name = document.getElementById("nameSpan").textContent;
+
+  let ansFine = document.getElementById("imgFine");
+  let img = document.createElement('img');
+  img.src = './cat9.gif';
+  img.style.width = '300px';
+  img.style.height = 'auto';
+  ansFine.innerHTML = '';
+  ansFine.appendChild(img)
+
   document.getElementById("funQuestion").textContent = "You're having a fine day, " + name + ". Is it okay to ask you a question?";
+  document.getElementById("")
   document.getElementById("thirdPage").style.display = "block";
   document.getElementById("secondPage").style.display = "none";
 });
 
 document.getElementById("notFineButton").addEventListener("click", function() {
   var name = document.getElementById("nameSpan").textContent;
+  var name = document.getElementById("nameSpan").textContent;
+
+  let ansFine = document.getElementById("imgFine");
+  let img = document.createElement('img');
+  img.src = './cat1.gif';
+  img.style.width = '300px';
+  img.style.height = 'auto';
+  ansFine.innerHTML = '';
+  ansFine.appendChild(img)
+
+
   document.getElementById("funQuestion").textContent = "Sorry to hear you're not having a good day, " + name + ". Is it okay to ask you a question to cheer you up?";
   document.getElementById("thirdPage").style.display = "block";
   document.getElementById("secondPage").style.display = "none";
