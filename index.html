@@ -26,7 +26,7 @@
     font-size: 18px;
     cursor: pointer;
   }
-  #firstPage, #secondPage, #thirdPage, #fourthPage ,#fifthPage ,#getOut {
+  #firstPage, #secondPage, #thirdPage, #fourthPage ,#fifthPage ,#getOut , #fnPageOne , #nnPageOne ,#fnPageTwo, #nnPageTwo{
     display: none;
     margin-top: 50px;
   }
@@ -42,6 +42,31 @@
     margin: 10px;
   }
   
+  #fnPageTwo {
+    text-align: left;
+    background: #cdfadb;
+    margin: 10px;
+    padding 10px;
+    border: 3px solid #6895d2;
+ border-radius: 20px;
+ box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
+  }
+  .txtHidden{
+    font-size: 24px;
+   
+  }
+ #toAnimate {
+    display: none;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+  }
+
+  #toAnimate.show {
+    display: block;
+    opacity: 1;
+  }
+   
+
   #container1st {
     display:flex;
     flex-direction : column;
@@ -71,6 +96,10 @@
   margin:  0 auto;
   padding:  20px;
   text-align:  center;
+}
+
+#btnNext{
+  height: 50px;
 }
 
 </style>
@@ -110,7 +139,6 @@
   <p id="question">How's your day, <span id="nameSpan"></span>?</p>
   <button class="funButton" id="fineButton">Fine</button>
   <button class="funButton" id="notFineButton">Not Fine</button>
-
 </div>
 
 <div class="container" id="thirdPage">
@@ -137,12 +165,40 @@
   </div>
   <h2>See you at Saturday <br> February 17,2024 </h2>
   <button class="funButton" id="clickMe">❤️</button>
+</div>
+
+
+<div class="container" id = "fnPageOne">
+  
+  <img src="./cat3.gif">
+  <p>hehehe , I know its you , Wyn , just being sure that you really know me HAHAHAH</p>
+  <button class="funButton" id="nextFnPage">>></button>
+</div>
+
+<div class="container" id="fnPageTwo">
+  <button id="animateTxt" class="funButton">Read Me!💌</button>
+  <p id="toAnimate" class="txtHidden"> Dear Wynona, <br><br> I hope this message finds you smiling. I wanted to pause and express my deep gratitude for you. Your love and companionship have filled my life with endless joy and warmth. Thank you for being my constant source of support, my confidante, and my partner in all things. I cherish every moment we share and am profoundly grateful to have you by my side. I Loooooove You Bbbrad!!!<br><br>
+    From Marck</p>
+  <div id="holdGif">
+
+  </div>
+</div>
+
+<div class="container" id="nnPageOne">
+  <p>Ohohoho its you bbbraaaad! <br> can i ask you?</p>
+  <img src="./patrick-spongebob.gif">
+  <button id="btnNext">❤️❤️❤️</button>
+</div>
+
+<div class= "container" id="nnPageTwo">
+  <h1>Will You Be My Valentine?</h1>
+  <button class="funButton" id="yesValentineButton2">Yes</button>
+  <button class="funButton" id="noValentineButton2">No</button>
   
 </div>
 
 
 <script>
-
 
 document.getElementById("clickButton").addEventListener("click", function() {
   document.getElementById("anscestor").style.display = "none";
@@ -151,16 +207,27 @@ document.getElementById("clickButton").addEventListener("click", function() {
 
 document.getElementById("submitBtn").addEventListener("click", function() {
   var name = document.getElementById("nameInput").value.trim().toLowerCase();
-  var acceptedNames = ["wyn", "wynona", "nona", "wynona soria"];
+  var acceptedNames = ["wyn", "wynona", "nona"];
+  var acceptedNames2 = ["wynona soria"];
+  var acceptedNames3 = ["bbbrad"];
   
   if (acceptedNames.includes(name)) {
     document.getElementById("firstPage").style.display = "none";
     document.getElementById("secondPage").style.display = "block";
     document.getElementById("nameSpan").textContent = name;
+   }else if (acceptedNames2.includes(name)) {
+      document.getElementById("firstPage").style.display = "none";
+      document.getElementById("fnPageOne").style.display = "block";
+    }else if (acceptedNames3.includes(name)) {
+      document.getElementById("firstPage").style.display = "none";
+      document.getElementById("nnPageOne").style.display = "flex";
+      document.getElementById("nnPageOne").style.flexDirection = "column";
     }else{
     document.getElementById("getOut").style.display = "block";
     document.getElementById("firstPage").style.display ="none";
   }
+  
+  
 });
 
 document.getElementById("backBtn").addEventListener("click",function(){
@@ -228,15 +295,6 @@ document.getElementById("noButton").addEventListener("click", function() {
 
 });
 
-//document.getElementById("noButton").addEventListener("click", function() {
-//  var buttonNo =  document.getElementById("noButton");
-//  var randomX = math.random() * (window.innerWidth - buttonNo.offsetWidth);
-//  var randomY = math.random() * (window.innerHeight - buttonNo.offsetHeight);
-//  buttonNo.style.position = "absolute";
-//  buttonNo.style.left = randomX + "px";
-//  buttonNo.style.top = randomY + "px";
-//});
-
 
 
 var valentineButtonSize = 0;
@@ -276,9 +334,6 @@ if (noValentineButtonCLickCount === 5){
   button.appendChild(img)
 }
   
-
-
-  
 });
 
 document.getElementById("yesValentineButton").addEventListener("click",function(){
@@ -291,7 +346,78 @@ document.getElementById("clickMe").addEventListener("click", function(){
     window.location.href = "flower.html";
 });
 
+
+document.getElementById("nextFnPage").addEventListener("click",function(){
+  document.getElementById("fnPageOne").style.display="none";
+  document.getElementById("fnPageTwo").style.display="block";
+});
+
+document.getElementById("btnNext").addEventListener("click", function(){
+  document.getElementById("nnPageOne").style.display="none";
+  document.getElementById("nnPageTwo").style.display="block";
+  
+});
+
+document.getElementById("animateTxt").addEventListener("click", function() {
+  var paragraph = document.getElementById("toAnimate");
+  paragraph.classList.add("show");
+  
+  document.getElementById("animateTxt").style.display="none";
+  
+  let gifff = document.getElementById("holdGif");
+  let img = document.createElement('img');
+  img.src = './cat6.gif';
+  img.style.width = '90%';
+  img.style.height = 'auto';
+  gifff.innerHTML = '';
+  gifff.appendChild(img)
+  
+});
+
+
+
+document.getElementById("noValentineButton2").addEventListener("click", function() {
+ // Increase size of the Yes Valentine button
+valentineButtonSize += 30;
+valentineButtonminus -= 1;
+valentineTextSize += 2;
+valentineMinus -= 0.3;
+document.getElementById("yesValentineButton2").style.width = valentineButtonSize + 100 + "px";
+document.getElementById("yesValentineButton2").style.height = valentineButtonSize + 60 + "px";
+document.getElementById("yesValentineButton2").style.fontSize = valentineTextSize  + "px";
+document.getElementById("noValentineButton2").style.width= valentineButtonminus + 100 + "px";
+document.getElementById("noValentineButton2").style.height = valentineButtonminus + 60 + "px";
+document.getElementById("noValentineButton2").style.fontSize = valentineMinus  + "px";
+
+
+
+noValentineButtonCLickCount++; 
+if (noValentineButtonCLickCount >= 5){
+  document.getElementById("noValentineButton2").style.display = "none";
+}
+
+if (noValentineButtonCLickCount === 5){
+  let button = document.getElementById("yesValentineButton2");
+  let img = document.createElement('img');
+  img.src = './cat10.gif';
+  img.style.width = '90%';
+  img.style.height = 'auto';
+  button.innerHTML = '';
+  button.appendChild(img)
+}
+  
+});
+
+
+document.getElementById("yesValentineButton2").addEventListener("click",function(){
+  document.getElementById("nnPageTwo").style.display="none";
+  document.getElementById("fifthPage").style.display ="block";
+});
+
+
+
 </script>
+
 
 </body>
 </html>
